@@ -19,6 +19,7 @@
     background-color: rgb(255, 255, 255);
     min-height: 94vh;
     padding-top: 4%;
+    margin-bottom: 10%;
 }
 
 .base h1{
@@ -103,7 +104,7 @@
         margin-bottom: 10%;
         border: none;
         border-radius: 1rem;
-        width: 270px;
+        width: 66vw;
         padding-top: 1rem;
         box-shadow: 0 4px 12px rebeccapurple;
         transition: all ease .4s;
@@ -134,7 +135,7 @@
     }
 
     .card img{
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 }

@@ -12,6 +12,7 @@
   padding: 12px 5%;
   background-color: #8C16F7;
   box-shadow: 1px 4px 10px #3e067241;
+  z-index: 1;
 }
 
 .header * {
@@ -77,6 +78,12 @@
     padding-top: 3%;
     gap: 1.7rem;
     animation: slidein 1s;
+  }
+
+  .header h1 {
+    font-family: 'Titan One', cursive;
+    animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+    font-weight: 500;
   }
 }
 
