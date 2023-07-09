@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./Components/Header/Header";
+import './global.css'
+import { Agendamento } from "./Pages/Agendamento";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="baseRotas">
+
+        <section id="inicio">
+          <h1>Seja bem vindo a Luisa Locações!</h1>
+          <div className="apresentacao">
+            <div>
+              <p>Somos uma empresa especializada em entretenimento infantil</p>
+              <img src="https://down-br.img.susercontent.com/file/sg-11134201-7qvds-liazbuyiinsw5c_tn" />
+            </div>
+            <div>
+              <p>Locação de Pula Pula e Piscina de bolinhas para festas infantis e eventos em geral.</p>
+              <img src="https://8866.cdn.simplo7.net/static/8866/sku/piscina-de-bolinhas-piscina-de-bolinhas-casinha-piscina-de-bolinhas-2-00m-completa--p-1621358408404.jpg" />
+            </div>
+          </div>
+
+        </section>
+
+        <Agendamento/>
+      </div>
     </div>
   );
 }

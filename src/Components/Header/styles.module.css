@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.header {
+  text-align: center;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5%;
+  background-color: #8C16F7;
+  box-shadow: 1px 4px 10px #3e067241;
+}
+
+.header * {
+  color: #fff;
+}
+
+.header p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header p:hover {
+  animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+}
+
+.header h1 {
+  font-family: 'Titan One', cursive;
+  animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+  font-weight: 500;
+}
+
+.header nav {
+  display: flex;
+  gap: 1.7rem;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@media (max-width:900px) {
+  .header {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #8C16F7;
+    box-shadow: 1px 4px 10px #3e067241;
+    margin: 0;
+    padding-bottom: 2%;
+  }
+
+  .header h1 {
+    margin: 0;
+  }
+
+  .header nav {
+    display: flex;
+    padding-top: 3%;
+    gap: 1.7rem;
+    animation: slidein 1s;
+  }
+}
+
+
+@keyframes bop {
+  0% {
+    transform: scale(0.9);
+  }
+
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+@keyframes bopB {
+  0% {
+    transform: scale(0.9);
+  }
+
+  80%,
+  100% {
+    transform: scale(1) rotateZ(-3deg);
+  }
+}
