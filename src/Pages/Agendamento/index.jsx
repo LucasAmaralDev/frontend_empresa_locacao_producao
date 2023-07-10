@@ -12,6 +12,39 @@ export function Agendamento() {
     const [data, setData] = useState(() => { return new Date().toISOString().split('T')[0]; })
     const [textData, setTextData] = useState('')
 
+    const pacotes = [
+        {
+            name: "COMBO - Pula Pula Médio + Piscina de bolinhas",
+            price: "R$130,00",
+            produtos: [1, 2],
+            img: 'https://a-static.mlcdn.com.br/800x560/cama-elastica-pula-pula-trampolim-230m-piscina-de-bolinhas-100m-nacional-premium-playground-rotoplay-brinquedos/grupocardoso/cama230piscina100/df9e9075282f09c5de587643493c131e.jpeg'
+        },
+        {
+            name: "COMBO - Pula Pula Grande + Piscina de bolinhas",
+            price: "R$150,00",
+            produtos: [1, 3],
+            img: 'https://a-static.mlcdn.com.br/800x560/pula-pula-trampolim-305m-grande-piscina-de-bolinhas-quadrada-100m-premium-rotoplay-brinquedos/mvbbrinquedos/c230p200escm2/1c30a124f608bb3033710709cca081e1.jpeg'
+        },
+        {
+            name: "Pula Pula Médio",
+            price: "R$90,00",
+            produtos: [1],
+            img: 'https://http2.mlstatic.com/D_NQ_NP_710023-MLB53583350999_022023-O.webp'
+        },
+        {
+            name: "Pula Pula Grande",
+            price: "R$110,00",
+            produtos: [3],
+            img: 'https://http2.mlstatic.com/D_NQ_NP_760275-MLB54196710876_032023-O.webp'
+        },
+        {
+            name: "Piscina de bolinhas",
+            price: "R$60,00",
+            produtos: [2],
+            img: 'https://http2.mlstatic.com/D_NQ_NP_830023-MLB31193525976_062019-O.webp'
+        }
+    ]
+
 
 
 
@@ -56,8 +89,8 @@ export function Agendamento() {
 
     const [agendamentos, setAgendamentos] = useState([])
     const [produtos, setProdutos] = useState([])
-    
-    
+
+
 
 
 
@@ -89,6 +122,11 @@ export function Agendamento() {
 
 
 
+    function agendar(pacote){
+        const item = pacote.name
+        const link = `https://wa.me/${WHATSAPPNUMBER}?text=Olá Gostaria de agendar o item ${item}, na data ${textData}`
+        window.open(link, '_blank')
+    }
 
 
 
@@ -103,59 +141,54 @@ export function Agendamento() {
             <span className={style.instrucao}>*Insira a data desejada e veja quais produtos estão disponiveis</span>
             <>{textData && <h2>{textData}</h2>}</>
             <div className={style.container}>
-                
-                {produtos.length > 0
 
-                    ?
+                {
+                    // verifica se a data é igual a data do agendamento e se o produto esta incluso no agendamento
+                    pacotes && pacotes.map((pacote, index) => {
 
-                    produtos.map((produto) => {
-
-
-                        // ver se na data marcada o pula pula esta disponivel
-
-                        const locado = agendamentos.map((agendamento) => {
-                            if (agendamento.data == data) {
-                                if (agendamento.produto_id === produto.id) {
-                                    return true
-                                }
+                        let indisponivel = false
+                        indisponivel = agendamentos.map((agendamento, index) => {
+                            if (data === agendamento.data && pacote.produtos.includes(agendamento.produto_id)) {
+                                return true
                             }
                         })
 
-                        let imagem
-
-                        switch (produto.id) {
-                            case 1:
-                                imagem = 'https://8866.cdn.simplo7.net/static/8866/sku/piscina-de-bolinhas-piscina-de-bolinhas-casinha-piscina-de-bolinhas-2-00m-completa--p-1621358408404.jpg'
-                                break;
-                            
-                            case 2:
-                                imagem = 'https://down-br.img.susercontent.com/file/sg-11134201-7qvds-liazbuyiinsw5c_tn'
-                        
-                            case 3:
-                                imagem = 'https://imgs.casasbahia.com.br/1513363533/1xg.jpg'
-                        }
+                        const estaLocado = indisponivel.includes(true)
 
 
                         return (
                             <div className={style.card}>
-                                <img src={imagem} alt="" />
-                                <h1>{produto.descricao}</h1>
-                                <p>Status<br/>{locado.includes(true) ? <span className={style.vermelho}>Locado</span> : <span className={style.verde}>Disponivel</span>}</p>
+                                <img src={pacote.img} alt="" />
+                                <p className={style.namecombo}> {pacote.name}</p>
+                                <p className={style.preco}> {pacote.price}</p>
+                                {
+                                    agendamentos.length > 0 && estaLocado
+
+                                        ?
+                                        <button
+                                            disabled
+                                            className={style.vermelho}>
+                                            Indisponivel
+                                        </button>
+
+                                        :
+                                        <button
+                                            className={style.verde}
+                                            onClick={() => agendar(pacote)}>
+                                            
+                                            Agendar
+                                        </button>
+                                }
                             </div>
                         )
-
-
-
-
-
                     })
 
-                    : <p>Carregando...</p>
                 }
-            <WhatsappButton number={WHATSAPPNUMBER} message={WHATSAPPMESSAGE} />
+
+                <WhatsappButton number={WHATSAPPNUMBER} message={WHATSAPPMESSAGE} />
             </div>
 
-                {/* Link para enviar a pessoa para o whatsapp ja com mensagem */}
+            {/* Link para enviar a pessoa para o whatsapp ja com mensagem */}
         </div>
     )
 }

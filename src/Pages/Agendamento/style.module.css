@@ -54,11 +54,11 @@
 }
 
 .card{
+    padding: 1.2rem 0.5rem;
     border: none;
     border-radius: 1rem;
     width: 300px;
-    padding-top: 1rem;
-    box-shadow: 0 4px 12px rebeccapurple;
+    box-shadow: 0 4px 18px rebeccapurple;
     transition: all ease .4s;
 }
 
@@ -71,16 +71,45 @@
 }
 
 .verde{
-    color: green !important;
+    color: rgb(0, 190, 0) !important;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: rgb(252, 255, 251);
+    box-shadow: 0 0.2px 1px yellowgreen;
+}
+
+.verde:hover{
+    background-color: rgb(0, 190, 0);
+    color: white !important;
+    transition: all ease .6s;
+}
+
+.verde:active{
+    background-color: rgb(0, 155, 0);
+    color: white !important;
+    transition: all ease .6s;
 }
 
 .vermelho{
     color: red !important;
+    font-weight: bold;
 }
 
 .card img{
     width: 200px;
     height: 200px;
+}
+
+.card button {
+    width: 60%;
+    height: 10%;
+    border-radius: 0.5rem;
+    border: 0.1px solid rgb(224, 224, 224);
+}
+
+.namecombo {
+    height: 8%;
+    margin-top: 1rem;
 }
 
 .card:hover{
@@ -91,6 +120,10 @@
 .instrucao{
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+.preco {
+    font-weight: bold;
 }
 
 
@@ -137,5 +170,22 @@
     .card img{
         width: 120px;
         height: 120px;
+    }
+
+    .card button {
+        height: 2.8em;
+        font-size: 1.3rem;
+    }
+
+    .verde:hover{
+        background-color: rgb(0, 190, 0);
+        color: white !important;
+        transition: all ease .1s;
+    }
+    
+    .verde:active{
+        background-color: rgb(0, 155, 0);
+        color: white !important;
+        transition: all ease .1s;
     }
 }
