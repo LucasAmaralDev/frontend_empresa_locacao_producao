@@ -188,4 +188,10 @@
         color: white !important;
         transition: all ease .1s;
     }
+
+    .base h2{
+        font-size: 3rem;
+        color: #000000;
+        margin-bottom: 2rem;
+    }
 }

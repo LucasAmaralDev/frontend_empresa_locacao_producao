@@ -185,7 +185,7 @@ export function Agendamento() {
 
                 }
 
-                <WhatsappButton number={WHATSAPPNUMBER} message={WHATSAPPMESSAGE} />
+                {/* <WhatsappButton number={WHATSAPPNUMBER} message={WHATSAPPMESSAGE} /> */}
             </div>
 
             {/* Link para enviar a pessoa para o whatsapp ja com mensagem */}
