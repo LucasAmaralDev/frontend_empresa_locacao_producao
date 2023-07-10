@@ -7,7 +7,6 @@ import { WhatsappButton } from '../../Components/WhatsappButton/WhatsappButton';
 export function Agendamento() {
     const URL_BACKEND = 'https://aws-empresa.onrender.com'
     const WHATSAPPNUMBER = "+5565984382796"
-    const WHATSAPPMESSAGE = "Olá, gostaria de agendar um brinquedo"
 
     const [data, setData] = useState(() => { return new Date().toISOString().split('T')[0]; })
     const [textData, setTextData] = useState('')
@@ -142,9 +141,9 @@ export function Agendamento() {
             <>{textData && <h2>{textData}</h2>}</>
             <div className={style.container}>
 
-                {
+                { agendamentos.length> 0
                     // verifica se a data é igual a data do agendamento e se o produto esta incluso no agendamento
-                    pacotes && pacotes.map((pacote, index) => {
+                    ?pacotes && pacotes.map((pacote, index) => {
 
                         let indisponivel = false
                         indisponivel = agendamentos.map((agendamento, index) => {
@@ -182,6 +181,7 @@ export function Agendamento() {
                             </div>
                         )
                     })
+                    : <h1>Carregando...</h1>
 
                 }
 
